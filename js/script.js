@@ -36,7 +36,7 @@
   }
 
   const getNews = async (source) => {
-    let responseSource = await fetch(`http://newsapi.org/v2/top-headlines?sources=${source}&apiKey=e3215bd34807454996b9c3b1444aa82a`)
+    let responseSource = await fetch(`https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=e3215bd34807454996b9c3b1444aa82a`)
     let news = await responseSource.json();
     return news
   }
