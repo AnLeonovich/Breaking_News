@@ -1,0 +1,95 @@
+@import "../css/header.css";
+@import "../css/channels.css";
+@import "../css/articles.css";
+@import "../css/footer.css";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  min-width: 350px;
+  max-width: 1200px;
+  margin: auto;
+  padding: 15px;
+}
+
+@font-face {
+  font-family: "Gentium";
+  font-style: bold;
+  src: url("../fonts/GenBkBasBI.ttf") format("truetype");
+}
+
+@font-face {
+  font-family: "Gentium-Reg";
+  font-style: normal;
+  src: url("../fonts/GenBkBasR.ttf") format("truetype");
+}
+
+@media screen and (min-width: 741px) and (max-width: 1100px) {
+  .channels {
+    grid-template-columns: repeat(2, 352px);
+  }
+}
+
+@media screen and (min-width: 100px) and (max-width: 950px) {
+  .news {
+    padding: 20px 0;
+  }
+
+  .article {
+    display: grid;
+    grid-template:
+      "image" 200px
+      "title"
+      "description"
+      "info"
+      /100%;
+    border-radius: 20px;
+    padding: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.45);
+  }
+
+  .article__title {
+    font-size: 120%;
+  }
+
+  .article__image {
+    justify-self: center;
+  }
+
+  .article__image_img {
+    width: auto;
+    height: 90%;
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.45);
+  }
+
+  .article__info {
+    grid-template:
+      "author"
+      "time" 20px
+      "button" 40px;
+    grid-row-gap: 10px; 
+  }
+
+  .article__info_form {
+    width: 100%;
+  }
+
+  .article__info_button {
+    width: 100%;
+  }
+
+  .article__description,
+  .article__title {
+    padding: 10px 0;
+  }
+}
+
+@media screen and (min-width: 100px) and (max-width: 740px) {
+  .channels {
+    grid-template-columns: repeat(1, 352px);
+  }
+}
