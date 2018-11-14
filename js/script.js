@@ -71,13 +71,13 @@
       const { id, name } = this.news.source
 
       BODY.innerHTML = `
-        <header class='header'>
+        <header class='header-news'>
           <button class='header__button'>Go Back</button>
           <h1 class='header__title'>${name}</h1>
         </header>
         <main>
           <div id='wrapper' class='articles'></div>
-        <main>
+        </main>
         <footer class='footer'>
           <img alt='Channel Logo' src=${CHANNELS_LOGO[id]} class='footer__logo'>
         </footer>
@@ -120,7 +120,7 @@
 
     createPage() {
       BODY.innerHTML = `
-        <header class='header'>
+        <header class='header-channels'>
           <h1 class='header__title'>Breaking news</h1>
         </header>
         <main>
