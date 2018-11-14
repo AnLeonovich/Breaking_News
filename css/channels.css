@@ -62,7 +62,8 @@
 }
 
 .channel__controls_button:hover,
-.article__info_button:hover {
+.article__info_button:hover,
+.header__button:hover {
   box-shadow: 0 0 10px rgba(0,0,0,0.5);
   background-color: #FFE6EB;
 }
@@ -72,6 +73,7 @@
 }
 
 .channel__controls_button:focus,
-.article__info_button:focus {
+.article__info_button:focus,
+.header__button:focus {
   outline: none;
 }

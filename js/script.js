@@ -15,62 +15,79 @@
     'usa-today': './content/USA_Today.svg'
   }
 
-  const SOURCES_URL = 'https://newsapi.org/v2/sources?apiKey=e3215bd34807454996b9c3b1444aa82a'
+  const BODY = document.querySelector('body')
+
+  const getUrl = (filter) => `https://newsapi.org/v2/${filter}apiKey=e3215bd34807454996b9c3b1444aa82a`
 
   const getAllSources = async () => {
-    let responseSources = await fetch(SOURCES_URL)
-    let sources = await responseSources.json()
-    return sources
+    try {
+      const filter = 'sources?'
+      let responseSources = await fetch(getUrl(filter))
+      let sources = responseSources.json()
+      return sources
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   const makeSourcesList = (sources) => {
-    let sourcesList = {}
+    let sourcesList = new Map()
     let i = 0
     while (i < sources.length) {
       if (NEWS_CHANNELS.indexOf(sources[i].id) >= 0) {
-        sourcesList[sources[i].id] = sources[i]
+        sourcesList.set(sources[i].id, sources[i])
       }
       i++
     }
+
     return sourcesList
   }
 
   const getNews = async (source) => {
-    let responseSource = await fetch(`https://newsapi.org/v2/top-headlines?sources=${source}&apiKey=e3215bd34807454996b9c3b1444aa82a`)
-    let news = await responseSource.json();
-    return news
+    try {
+      const filter = `top-headlines?sources=${source}&`
+      let responseSource = await fetch(getUrl(filter))
+      let news = responseSource.json();
+      return news
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   class createNewsPage {
     constructor(news){
       this.news = news
-      this.createHeader()
+      this.createPage()
+      this.articles = ''
     
       if (this.news.totalResults > 0) {
-        this.news.articles.forEach((article, i) => this.createArticle(article, i))
+        this.news.articles.forEach((article) => this.addArticle(article))
       }
+
+      document.getElementById('wrapper').innerHTML += this.articles
     }
 
-    createHeader() {
+    createPage() {
       const { id, name } = this.news.source
-      const body = document.querySelector('body')
-      
-      body.innerHTML = `
+
+      BODY.innerHTML = `
         <header class='header'>
+          <button class='header__button'>Go Back</button>
           <h1 class='header__title'>${name}</h1>
         </header>
         <main>
-          <div id='articles' class='articles'></div>
+          <div id='wrapper' class='articles'></div>
         <main>
         <footer class='footer'>
           <img alt='Channel Logo' src=${CHANNELS_LOGO[id]} class='footer__logo'>
         </footer>
       `
-      this.wrapper = document.getElementById('articles')  
+
+      document.querySelector('.header__button').addEventListener('click', () => {init()})
     }
 
-    createArticle(article, i) {
-      this.wrapper.innerHTML += `
+    addArticle(article) {
+      this.articles += `
         <article class='article'>
           <div class='article__image'>
             <img alt='Article intro picture' src=${article.urlToImage} class='article__image_img'>
@@ -89,18 +106,37 @@
     }
   }
 
-  class CreateChannel {
-    constructor (channel) {
-      this.channel = channel
-      this.addChannel()
+  class CreateChannels {
+    constructor (sources) {
+      this.channels = ''
+      this.createPage()
+
+      for (let channel of sources.values()) {
+        this.addChannel(channel)
+      }
+
+      document.getElementById('wrapper').innerHTML = this.channels
     }
 
-    addChannel() {
-      const { name, id, url } = this.channel
-      const logo = CHANNELS_LOGO[id]
-      const wrapper = document.getElementById('channels')
+    createPage() {
+      BODY.innerHTML = `
+        <header class='header'>
+          <h1 class='header__title'>Breaking news</h1>
+        </header>
+        <main>
+          <div id='wrapper' class='channels'></div>
+        </main>
+        <footer class='footer'>
+          <span class='footer__link'>Powered by <a href='https://newsapi.org/'>NewsAPI.org</a></span>
+        </footer>
+      `
+    }
 
-      wrapper.innerHTML += `
+    addChannel(channel) {
+      const { name, id, url } = channel
+      const logo = CHANNELS_LOGO[id]
+      
+      this.channels += `
         <section class='channel'>
           <h2 class='channel__title'>${name}</h2>
           <img src=${logo} alt=${name} class='channel__logo'>
@@ -111,26 +147,21 @@
     }
   }
 
-  getAllSources()
-    .then(result => {
-      let sources = makeSourcesList(result.sources)
-      return sources
+const init = async () => {
+  let allSources = await getAllSources()
+  let sources = makeSourcesList(allSources.sources)
+
+  new CreateChannels(sources)
+
+  let checkNews = document.querySelectorAll('.channel__controls_button')
+  checkNews.forEach(button => {
+    button.addEventListener('click', async (e) => {
+      let news = await getNews(e.target.dataset.channel)
+      new createNewsPage({ ...news, source: { id: e.target.dataset.channel, name:  e.target.dataset.name}})
     })
-    .then(sources => {
-      for (let channel in sources) {
-        new CreateChannel(sources[channel])
-      }
-    })
-    .then(() => {
-      let checkNews = document.querySelectorAll('.channel__controls_button')
-      checkNews.forEach(button => {
-        button.addEventListener('click', (e) => {
-          getNews(e.target.dataset.channel)
-            .then(news => {
-              new createNewsPage({ ...news, source: { id: e.target.dataset.channel, name:  e.target.dataset.name}})
-            })
-        })
-      })
-    })
+  })
+}
+
+init()
 
 })();
