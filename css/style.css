@@ -122,3 +122,15 @@ body {
     max-width: 315px;
   }
 }
+
+@media only screen and (max-device-width: 480px) {
+  .article__info_author,
+  .article__info_time,
+  .article__description {
+    font-size: 35%;
+  }
+
+  .article__title {
+    font-size: 45%;
+  }
+}
