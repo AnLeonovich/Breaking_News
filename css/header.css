@@ -13,6 +13,7 @@
   display: grid;
   grid-template:
     "title";
+  justify-content: center;
 }
 
 .header__title {
