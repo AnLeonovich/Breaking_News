@@ -1,5 +1,4 @@
-(function(){ 
-
+(function(){
   const NEWS_CHANNELS = ['cnn', 'google-news', 'the-washington-times', 'the-new-york-times', 'national-geographic',
     'fox-news', 'usa-today', 'the-wall-street-journal', 'mtv-news']
 
@@ -154,7 +153,7 @@ const init = async () => {
   new CreateChannels(sources)
 
   let checkNews = document.querySelectorAll('.channel__controls_button')
-  checkNews.forEach(button => {
+  Array.from(checkNews).forEach(button => {
     button.addEventListener('click', async (e) => {
       let news = await getNews(e.target.dataset.channel)
       new createNewsPage({ ...news, source: { id: e.target.dataset.channel, name:  e.target.dataset.name}})

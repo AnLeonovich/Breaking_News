@@ -1,0 +1,26 @@
+{
+  "name": "breaking_news",
+  "version": "1.0.0",
+  "description": "FrontCamp hometask #1",
+  "main": "index.js",
+  "scripts": {
+    "build": "babel src --out-file dist/build.js",
+    "watch": "babel src --watch --out-file dist/build.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AnLeonovich/Breaking_News.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AnLeonovich/Breaking_News/issues"
+  },
+  "homepage": "https://github.com/AnLeonovich/Breaking_News#readme",
+  "devDependencies": {
+    "@babel/cli": "^7.1.5",
+    "@babel/core": "^7.1.6",
+    "@babel/polyfill": "^7.0.0",
+    "@babel/preset-env": "^7.1.6"
+  }
+}
