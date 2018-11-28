@@ -1,7 +1,7 @@
-@import "../css/header.css";
-@import "../css/channels.css";
-@import "../css/articles.css";
-@import "../css/footer.css";
+@import "./header.css";
+@import "./channels.css";
+@import "./articles.css";
+@import "./footer.css";
 
 * {
   margin: 0;
@@ -18,13 +18,13 @@ body {
 @font-face {
   font-family: "Gentium";
   font-style: bold;
-  src: url("../fonts/GenBkBasBI.ttf") format("truetype");
+  src: url("../src/fonts/GenBkBasBI.ttf") format("truetype");
 }
 
 @font-face {
   font-family: "Gentium-Reg";
   font-style: normal;
-  src: url("../fonts/GenBkBasR.ttf") format("truetype");
+  src: url("../src/fonts/GenBkBasR.ttf") format("truetype");
 }
 
 @media screen and (min-width: 741px) and (max-width: 1100px) {
