@@ -81,3 +81,12 @@
 .article__info_label {
   font-family: "Gentium";
 }
+
+.article__info_button:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  background-color: #FFE6EB;
+}
+
+.article__info_button:focus {
+  outline: none;
+}

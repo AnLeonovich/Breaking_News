@@ -1,7 +1,4 @@
-@import "./header.css";
-@import "./channels.css";
-@import "./articles.css";
-@import "./footer.css";
+@import "./button.css";
 
 * {
   margin: 0;

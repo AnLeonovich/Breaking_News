@@ -1,4 +1,5 @@
-import { CHANNELS_LOGO, BODY } from './constants'
+import { CHANNELS_LOGO, BODY } from '../constants'
+import './channels.css'
 
 export default class CreateChannels {
   constructor (sources) {

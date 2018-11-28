@@ -1,5 +1,6 @@
-import { CHANNELS_LOGO, BODY } from './constants'
-import { init } from './init'
+import { CHANNELS_LOGO, BODY } from '../constants'
+import { init } from '../init'
+import './news.css'
 
 export default class CreateNewsPage {
   constructor(news){

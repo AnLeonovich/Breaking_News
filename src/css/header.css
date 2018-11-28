@@ -34,3 +34,12 @@
   width: 100px;
   margin-top: 15px;
 }
+
+.header__button:hover {
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  background-color: #FFE6EB;
+}
+
+.header__button:focus {
+  outline: none;
+}
