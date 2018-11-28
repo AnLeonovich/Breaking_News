@@ -40,6 +40,10 @@ module.exports = {
             loader: path.resolve('./src/loader/json-loader.js')
           }
         ]
+      },
+      {
+        test: /\.(eot|ttf|woff|woff2)$/,
+        loader: 'file-loader?name=/fonts/[name].[ext]'
       }
     ]
   },
