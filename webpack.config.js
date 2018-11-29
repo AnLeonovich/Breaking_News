@@ -2,8 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
-module.exports = {
-  devtool: 'source-map',
+const config = {
   entry: ['@babel/polyfill', './src/index.js'],
   output: {
     path: path.join(__dirname, 'dist'),
@@ -52,4 +51,17 @@ module.exports = {
       template: './index.html'
     })
   ]
+}
+
+module.exports = (env, argv) => {
+
+  if (argv.mode === 'development') {
+    config.devtool = 'source-map'
+  }
+
+  if (argv.mode === 'production') {
+    config.plugins = []
+  }
+
+  return config;
 }
