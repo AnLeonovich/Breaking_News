@@ -4,7 +4,7 @@ class GetRequest {
   constructor (filter) {
     this.filter = filter
   }
-  send = async () => {
+  async send () {
     return await fetch (getUrl(this.filter))
   } 
 }
@@ -13,7 +13,7 @@ class PostRequest {
   constructor (article) {
     this.article = article
   }
-  send = async () => {
+  async send () {
     return await fetch ('url to post new article', {
       method: 'POST',
       headers: {
@@ -29,7 +29,7 @@ class DeleteRequest {
   constructor (articleId) {
     this.articleId = articleId
   }
-  send = async () => {
+  async send () {
     return await fetch ('url to delete article by Id', {
       method: 'DELETE',
       body: JSON.stringify(this.articleId)
@@ -44,7 +44,7 @@ class PutRequest {
       field: value
     }
   }
-  send = async () => {
+  async send () {
     return await fetch ('url to update article by Id with new data', {
       method: 'PUT',
       body: JSON.stringify(this.newValue)

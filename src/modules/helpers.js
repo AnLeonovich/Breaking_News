@@ -14,10 +14,7 @@ const getAllSources = async () => {
 
     return sources
   } catch (err) {
-    import( /* webpackChunkName: "errorHandler" */ './server/errorHandler').then((module) => {
-      let ErrorHandler = module.default
-      new ErrorHandler().showError(err.message)
-    })
+    showError(err.message)
   }
 }
 
@@ -47,11 +44,15 @@ const getNews = async (source) => {
 
     return news
   } catch (err) {
-    import( /* webpackChunkName: "errorHandler" */ './server/errorHandler').then((module) => {
-      let ErrorHandler = module.default
-      new ErrorHandler().showError(err.message)
-    })
+    showError(err.message)
   }
+}
+
+const showError = (message) => {
+  import( /* webpackChunkName: "errorHandler" */ './server/errorHandler').then((module) => {
+    let ErrorHandler = module.default
+    new ErrorHandler().showError(message)
+  })
 }
 
 export { getAllSources, makeSourcesList, getNews }

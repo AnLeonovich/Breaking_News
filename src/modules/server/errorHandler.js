@@ -7,7 +7,7 @@ export default class ErrorHandler {
     return this;
   }
 
-  showError = (message) => {
+  showError(message) {
     alert(message)
   }
 }
