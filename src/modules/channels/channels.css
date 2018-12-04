@@ -73,3 +73,40 @@
 .channel__controls_button:focus {
   outline: none;
 }
+
+@media screen and (min-width: 741px) and (max-width: 1100px) {
+  .channels {
+    grid-template-columns: repeat(2, 352px);
+  }
+}
+
+@media screen and (min-width: 100px) and (max-width: 740px) {
+  .channels {
+    grid-template-columns: repeat(1, 352px);
+  }
+}
+
+@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){  
+  .channels {
+    display: flex;
+    justify-content: space-around;
+    flex-flow: wrap;
+  }
+
+  .channels .channel {
+    margin-bottom: 30px;
+    height: 192px;
+  }
+
+  .channel__controls {
+    float: left;
+    margin-top: -4px;
+    padding: 7px;
+    width: calc(50% - 14px);
+  }
+
+  .channel__controls_button {
+    margin-top: -4px;
+    padding: 5px 31.8px;
+  }
+}
