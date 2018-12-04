@@ -1,15 +1,23 @@
-import { NEWS_CHANNELS } from './constants'
-
-const getUrl = (filter) => `https://newsapi.org/v2/${filter}apiKey=e3215bd34807454996b9c3b1444aa82a`
+import { NEWS_CHANNELS, GET } from './constants'
+import Server from './server/server'
 
 const getAllSources = async () => {
   try {
     const filter = 'sources?'
-    let responseSources = await fetch(getUrl(filter))
-    let sources = responseSources.json()
+    let request = new Server(GET, filter)
+    let responseSources = await request.send()
+    let sources = await responseSources.json()
+
+    if (sources.status === 'error') {
+      throw new Error(sources.message)
+    }
+
     return sources
   } catch (err) {
-    console.log(err)
+    import( /* webpackChunkName: "errorHandler" */ './server/errorHandler').then((module) => {
+      let ErrorHandler = module.default
+      new ErrorHandler().showError(err.message)
+    })
   }
 }
 
@@ -29,11 +37,20 @@ const makeSourcesList = (sources) => {
 const getNews = async (source) => {
   try {
     const filter = `top-headlines?sources=${source}&`
-    let responseSource = await fetch(getUrl(filter))
-    let news = responseSource.json();
+    let request = new Server(GET, filter)
+    let responseSources = await request.send()
+    let news = await responseSources.json()
+
+    if (news.status === 'error') {
+      throw new Error(sources.message)
+    }
+
     return news
   } catch (err) {
-    console.log(err)
+    import( /* webpackChunkName: "errorHandler" */ './server/errorHandler').then((module) => {
+      let ErrorHandler = module.default
+      new ErrorHandler().showError(err.message)
+    })
   }
 }
 

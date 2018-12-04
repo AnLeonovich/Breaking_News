@@ -25,4 +25,9 @@ const CHANNELS_LOGO = {
 
 const BODY = document.querySelector('body')
 
-export { NEWS_CHANNELS, CHANNELS_LOGO, BODY }
+const GET = 'GET'
+const POST = 'POST'
+const DELETE = 'DELETE'
+const PUT = 'PUT'
+
+export { NEWS_CHANNELS, CHANNELS_LOGO, BODY, GET, POST, DELETE, PUT }
