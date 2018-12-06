@@ -9,7 +9,7 @@ button.addEventListener('click', () => {
 })
 
 function seeNews() {
-  import( /* webpackChunkName: "init" */ './modules/init').then((module) => {
+  import( /* webpackChunkName: "presenter" */ './modules/presenter/presenter').then((module) => {
     module.init()
   })
 }

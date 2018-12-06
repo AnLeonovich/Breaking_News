@@ -1,5 +1,5 @@
-import { CHANNELS_LOGO, BODY } from '../constants'
-import { init } from '../init'
+import { CHANNELS_LOGO, BODY } from '../../constants'
+import { init } from '../../presenter/presenter'
 import './news.css'
 
 const createNewsPage = (news) => {

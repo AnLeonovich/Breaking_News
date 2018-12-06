@@ -1,16 +1,13 @@
-import { CHANNELS_LOGO, BODY } from '../constants'
+import { CHANNELS_LOGO, BODY } from '../../constants'
 import './channels.css'
 
-let channels = ''
+
 
 const createChannelsPage = (sources) => {
   createPage()
+  let channelsHTML = addChannels(sources)
 
-  for (let channel of sources.values()) {
-    addChannel(channel)
-  }
-
-  document.getElementById('wrapper').innerHTML = channels
+  document.getElementById('wrapper').innerHTML = channelsHTML
 }
 
 const createPage = () => {
@@ -27,11 +24,14 @@ const createPage = () => {
   `
 }
 
-const addChannel = (channel) => {
-  const { name, id, url } = channel
-  const logo = CHANNELS_LOGO[id]
-  
-  channels += `
+const addChannels = (sources) => {
+  let channels = ''
+
+  for (let channel of sources.values()) {
+    const { name, id, url } = channel
+    const logo = CHANNELS_LOGO[id]
+
+    channels += `
     <section class='channel'>
       <h2 class='channel__title'>${name}</h2>
       <img src=${logo} alt=${name} class='channel__logo'>
@@ -39,6 +39,9 @@ const addChannel = (channel) => {
       <button class='channel__controls_button' data-channel=${id} data-name='${name}'>Check news</button>
     </section>
   `
+  }
+
+  return channels
 }
 
 export default createChannelsPage

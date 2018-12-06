@@ -1,8 +1,8 @@
-import { getAllSources, makeSourcesList, getNews } from './helpers'
-import createNewsPage from './news/news'
-import createChannelsPage from './channels/channels'
-import '../css/header.css'
-import '../css/footer.css'
+import { getAllSources, makeSourcesList, getNews } from '../model/helpers'
+import createNewsPage from '../view/news/news'
+import createChannelsPage from '../view/channels/channels'
+import '../../css/header.css'
+import '../../css/footer.css'
 
 export const init = async () => {
   try {

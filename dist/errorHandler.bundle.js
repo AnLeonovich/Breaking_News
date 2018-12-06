@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([["errorHandler"],{
 
-/***/ "./src/modules/server/errorHandler.js":
-/*!********************************************!*\
-  !*** ./src/modules/server/errorHandler.js ***!
-  \********************************************/
+/***/ "./src/modules/model/server/errorHandler.js":
+/*!**************************************************!*\
+  !*** ./src/modules/model/server/errorHandler.js ***!
+  \**************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 

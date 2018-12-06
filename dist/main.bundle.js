@@ -43,7 +43,7 @@
 /******/
 /******/ 	// script path function
 /******/ 	function jsonpScriptSrc(chunkId) {
-/******/ 		return __webpack_require__.p + "" + ({"init":"init","errorHandler":"errorHandler"}[chunkId]||chunkId) + ".bundle.js"
+/******/ 		return __webpack_require__.p + "" + ({"presenter":"presenter","errorHandler":"errorHandler"}[chunkId]||chunkId) + ".bundle.js"
 /******/ 	}
 /******/
 /******/ 	// The require function
@@ -10043,7 +10043,7 @@ button.addEventListener('click', function () {
 });
 
 function seeNews() {
-  __webpack_require__.e(/*! import() | init */ "init").then(__webpack_require__.bind(null, /*! ./modules/init */ "./src/modules/init.js")).then(function (module) {
+  __webpack_require__.e(/*! import() | presenter */ "presenter").then(__webpack_require__.bind(null, /*! ./modules/presenter/presenter */ "./src/modules/presenter/presenter.js")).then(function (module) {
     module.init();
   });
 }

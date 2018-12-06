@@ -1,5 +1,5 @@
 import { GetRequest, PostRequest, DeleteRequest, PutRequest } from './requests'
-import { GET, POST, DELETE, PUT } from '../constants'
+import { GET, POST, DELETE, PUT } from '../../constants'
 
 class CreateRequest {
   constructor (type, filter) {

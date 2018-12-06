@@ -1,4 +1,4 @@
-import { NEWS_CHANNELS, GET } from './constants'
+import { NEWS_CHANNELS, GET } from '../constants'
 import Server from './server/server'
 
 const getAllSources = async () => {
